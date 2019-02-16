@@ -4,3 +4,6 @@ This is a part of the 100DaysOfCode challenge. It is created with intentions to 
 **Links which I have used to learn:** 
 1. [Introduction to Machine Learning](https://www.datacamp.com/courses/introduction-to-machine-learning-with-r)
 2. [Probability Cheatsheet v2.0](https://www.sas.upenn.edu/~astocker/lab/teaching-files/PSYC739-2016/probability_cheatsheet.pdf)
+3. [Python Cheatsheet by DataCamp](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/PythonForDataScience.pdf)
+4. [Data science blogs](https://www.kdnuggets.com/websites/blogs.html)
+5. [Stats cheatsheet](http://web.mit.edu/~csvoss/Public/usabo/stats_handout.pdf)
