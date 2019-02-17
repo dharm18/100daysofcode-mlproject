@@ -7,3 +7,4 @@ This is a part of the 100DaysOfCode challenge. It is created with intentions to 
 3. [Python Cheatsheet by DataCamp](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/PythonForDataScience.pdf)
 4. [Data science blogs](https://www.kdnuggets.com/websites/blogs.html)
 5. [Stats cheatsheet](http://web.mit.edu/~csvoss/Public/usabo/stats_handout.pdf)
+6. [analyticsvidhya datascience path](https://trainings.analyticsvidhya.com/courses/course-v1:AnalyticsVidhya+LPDS2019+LPDS2019_T1/course/)
