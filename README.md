@@ -8,3 +8,5 @@ This is a part of the 100DaysOfCode challenge. It is created with intentions to 
 4. [Data science blogs](https://www.kdnuggets.com/websites/blogs.html)
 5. [Stats cheatsheet](http://web.mit.edu/~csvoss/Public/usabo/stats_handout.pdf)
 6. [analyticsvidhya datascience path](https://trainings.analyticsvidhya.com/courses/course-v1:AnalyticsVidhya+LPDS2019+LPDS2019_T1/course/)
+7. [Comparison of deep learning software](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)
+8. [](https://www.kaggle.com/sudalairajkumar/where-do-people-learn-ml-ds)
