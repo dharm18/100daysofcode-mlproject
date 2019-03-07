@@ -169,3 +169,32 @@ FROM countries AS c1
     USING (code)
 -- 6. Where region like Melanesia and Micronesia
 WHERE region LIKE 'M%esia';
+
+
+-- 4. Select fields
+SELECT c.name AS city, l.name AS language
+-- 1. From cities (alias as c)
+FROM cities AS c        
+  -- 2. Join to languages (alias as l)
+  CROSS JOIN languages AS l
+-- 3. Where c.name like Hyderabad
+WHERE c.name LIKE 'Hyder%';
+
+
+--Outer challenge
+-- Select fields
+select c.name as country, region, life_expectancy as life_exp
+-- From countries (alias as c)
+from countries as c
+  -- Join to populations (alias as p)
+  left join populations as p
+    -- Match on country code
+    on c.code = p.country_code
+-- Focus on 2010
+where year=2010
+-- Order by life_exp
+order by life_exp
+-- Limit to 5 records
+limit 5
+
+
