@@ -80,3 +80,52 @@ FROM cities AS c1
 -- Order by descending country code
 ORDER BY code desc;
 
+
+/*
+5. Select country name AS country, the country's local name,
+the language name AS language, and
+the percent of the language spoken in the country
+*/
+SELECT c.name AS country, local_name, l.name AS language, percent
+-- 1. From left table (alias as c)
+FROM countries AS c
+  -- 2. Join to right table (alias as l)
+  INNER JOIN languages AS l
+    -- 3. Match on fields
+    ON c.code = l.code
+-- 4. Order by descending country
+ORDER BY country desc
+
+-- 5. Select name, region, and gdp_percapita
+SELECT name, region, gdp_percapita
+-- 1. From countries (alias as c)
+FROM countries AS c
+  -- 2. Left join with economies (alias as e)
+  LEFT JOIN economies AS e
+    -- 3. Match on code fields
+    ON c.code = e.code
+-- 4. Focus on 2010
+WHERE year = 2010;
+
+-- convert this code to use RIGHT JOINs instead of LEFT JOINs
+/*
+SELECT cities.name AS city, urbanarea_pop, countries.name AS country,
+       indep_year, languages.name AS language, percent
+FROM cities
+  LEFT JOIN countries
+    ON cities.country_code = countries.code
+  LEFT JOIN languages
+    ON countries.code = languages.code
+ORDER BY city, language;
+*/
+
+SELECT cities.name AS city, urbanarea_pop, countries.name AS country,
+       indep_year, languages.name AS language, percent
+FROM languages
+  RIGHT JOIN countries
+    ON countries.code = languages.code
+  RIGHT JOIN cities
+    ON cities.country_code = countries.code
+ORDER BY city, language;
+
+
