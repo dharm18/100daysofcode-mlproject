@@ -242,3 +242,29 @@ ORDER BY code, year;
 
 ---intersect
 
+-- Select fields
+select code,year
+  -- From economies
+  from economies
+	-- Set theory clause
+	intersect
+-- Select fields
+select country_code as code, year
+  -- From populations
+  from populations
+-- Order by code and year
+order by code, year;
+
+
+-- Select fields
+select name 
+  -- From countries
+  from countries
+	-- Set theory clause
+	intersect
+-- Select fields
+select name
+  -- From cities
+  from cities;
+  
+  
