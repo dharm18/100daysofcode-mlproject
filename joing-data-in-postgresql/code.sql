@@ -197,4 +197,48 @@ order by life_exp
 -- Limit to 5 records
 limit 5
 
+--UNION
+-- Select fields from 2010 table
+select *
+  -- From 2010 table
+  from economies2010
+	-- Set theory clause
+	union
+-- Select fields from 2015 table
+select *
+  -- From 2015 table
+  from economies2015
+-- Order by code and year
+order by code, year;
+
+
+-- Select field
+select country_code
+  -- From cities
+  from cities
+	-- Set theory clause
+	union
+-- Select field
+select code as country_code
+  -- From currencies
+  from currencies
+-- Order by country_code
+order by country_code;
+
+--union all
+-- Select fields
+SELECT code, year
+  -- From economies
+  FROM economies
+	-- Set theory clause
+	union all
+-- Select fields
+SELECT country_code as code, year
+  -- From populations
+  FROM populations
+-- Order by code, year
+ORDER BY code, year;
+
+
+---intersect
 
