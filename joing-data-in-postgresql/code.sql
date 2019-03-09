@@ -267,4 +267,31 @@ select name
   -- From cities
   from cities;
   
-  
+---Except
+
+-- Select field
+SELECT name
+  -- From cities
+  FROM cities
+	-- Set theory clause
+	EXCEPT
+-- Select field
+SELECT capital as name
+  -- From countries
+  FROM countries
+-- Order by result
+ORDER BY name asc;
+
+-------Except (2)  
+-- Select field
+select capital
+  -- From countries
+  from countries
+	-- Set theory clause
+	except
+-- Select field
+select name as capital
+  -- From cities
+  from cities
+-- Order by ascending capital
+order by capital;
