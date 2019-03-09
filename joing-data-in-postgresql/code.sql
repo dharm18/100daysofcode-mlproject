@@ -303,7 +303,13 @@ WHERE region = 'Middle East')
 -- Order by name
 order by name;
 
-
+---Diagnosing problems using anti-join
+-- Select statement
+select count(*)
+  -- From countries
+  from countries
+-- Where continent is Oceania
+where continent = 'Oceania';
 
 -------Except (2)  
 -- Select field
@@ -318,3 +324,28 @@ select name as capital
   from cities
 -- Order by ascending capital
 order by capital;
+
+-- 5. Select fields (with aliases)
+select c1.code,c1.name,basic_unit as currency
+  -- 1. From countries (alias as c1)
+  from countries as c1
+  	-- 2. Join with currencies (alias as c2)
+  	inner join currencies as c2
+    -- 3. Match on code
+    on c1.code = c2.code
+-- 4. Where continent is Oceania
+where continent = 'Oceania';
+
+-- 3. Select fields
+select code, name
+  -- 4. From Countries
+  from countries
+  -- 5. Where continent is Oceania
+  where continent = 'Oceania'
+  	-- 1. And code not in
+  	and code not in
+  	-- 2. Subquery
+  	(select code from currencies
+  	 );
+	 
+	 
