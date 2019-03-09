@@ -282,6 +282,29 @@ SELECT capital as name
 -- Order by result
 ORDER BY name asc;
 
+----Semi-join
+-- Select code
+select code
+  -- From countries
+  from countries
+-- Where region is Middle East
+where region = 'Middle East';
+
+-- Select distinct fields
+select distinct name
+  -- From languages
+  from languages
+-- Where in statement
+WHERE code IN
+  -- Subquery
+  (SELECT code
+  FROM countries
+WHERE region = 'Middle East')
+-- Order by name
+order by name;
+
+
+
 -------Except (2)  
 -- Select field
 select capital
