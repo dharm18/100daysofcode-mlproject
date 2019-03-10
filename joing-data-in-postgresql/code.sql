@@ -389,5 +389,111 @@ where life_expectancy >
    from populations where year= 2015
    )
    and year = 2015;
-   
-   
+
+-- 2. Select fields
+select name, country_code, urbanarea_pop
+  -- 3. From cities
+  from cities
+-- 4. Where city name in the field of capital cities
+where name IN
+  -- 1. Subquery
+  (select capital
+   from countries)
+ORDER BY urbanarea_pop DESC;
+
+SELECT countries.name AS country, COUNT(*) AS cities_num
+  FROM cities
+    INNER JOIN countries
+    ON countries.code = cities.country_code
+GROUP BY country
+ORDER BY cities_num DESC, country
+LIMIT 9;
+
+
+SELECT countries.name AS country,
+  (SELECT count(*)
+   FROM cities
+   WHERE countries.code = cities.country_code) AS cities_num
+FROM countries
+ORDER BY cities_num desc, country
+LIMIT 9;
+
+
+-- Select fields (with aliases)
+select code, count(*) as lang_num
+  -- From languages
+  from languages
+-- Group by code
+group by code;
+
+-- Select fields
+select countries.local_name, subquery.lang_num
+  -- From countries
+  from countries,
+  	-- Subquery (alias as subquery)
+  	(-- Select fields (with aliases)
+select languages.code, count(*) as lang_num
+  -- From languages
+  from languages 
+-- Group by code
+group by code) AS subquery
+  -- Where codes match
+  where subquery.code = countries.code
+-- Order by descending number of languages
+order by lang_num desc;
+
+-- Select fields
+select name,continent,inflation_rate
+  -- From countries
+  from countries
+  	-- Join to economies
+  	inner join economies
+    -- Match on code
+    using(code)
+-- Where year is 2015
+where year = 2015;
+
+
+--------------------------------
+
+-- Select fields
+select name,continent,inflation_rate
+  -- From countries
+  from countries
+	-- Join to economies
+	inner join economies
+	-- Match on code
+	on countries.code = economies.code
+  -- Where year is 2015
+  where year = 2015
+    -- And inflation rate in subquery (alias as subquery)
+    and inflation_rate in (-- Select fields
+select max(inflation_rate) as max_inf
+  -- Subquery using FROM (alias as subquery)
+  FROM (
+      -- Select fields
+select name,continent,inflation_rate
+  -- From countries
+  from countries
+  	-- Join to economies
+  	inner join economies
+    -- Match on code
+    using(code)
+-- Where year is 2015
+where year = 2015) AS subquery
+-- Group by continent
+group by continent);
+
+
+-- Select fields
+SELECT code, inflation_rate, unemployment_rate
+  -- From economies
+  FROM economies
+  -- Where year is 2015 and code is not in
+  WHERE year = 2015 AND code not in
+  	-- Subquery
+  	(SELECT code
+  	 FROM countries
+  	 WHERE (gov_form = 'Constitutional Monarchy' OR gov_form LIKE '%Republic%'))
+-- Order by inflation rate
+ORDER BY inflation_rate;
