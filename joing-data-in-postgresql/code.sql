@@ -369,4 +369,25 @@ select name
     FROM populations AS p
 );
 
-	
+----capter 4
+
+-- Select average life_expectancy
+select avg(life_expectancy)
+  -- From populations
+  from populations
+-- Where year is 2015
+where year = 2015
+
+-- Select fields
+select *
+  -- From populations
+  from populations
+-- Where life_expectancy is greater than
+where life_expectancy >
+  -- 1.15 * subquery
+  1.15 * (select avg(life_expectancy)
+   from populations where year= 2015
+   )
+   and year = 2015;
+   
+   
