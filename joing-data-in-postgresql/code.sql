@@ -497,3 +497,63 @@ SELECT code, inflation_rate, unemployment_rate
   	 WHERE (gov_form = 'Constitutional Monarchy' OR gov_form LIKE '%Republic%'))
 -- Order by inflation rate
 ORDER BY inflation_rate;
+
+
+----------------------------------------------------------------
+
+-- Select fields
+SELECT DISTINCT name, total_investment, imports
+  -- From table (with alias)
+  FROM economies AS e
+    -- Join with table (with alias)
+    LEFT JOIN countries AS c
+      -- Match on code
+      ON (e.code = c.code
+      -- and code in Subquery
+        AND c.code IN (
+          SELECT l.code
+          FROM languages AS l
+          WHERE l.official = 'true'
+        ) )
+  -- Where region and year are correct
+  WHERE region = 'Central America' AND year = 2015
+-- Order by field
+ORDER BY name;
+
+--------------------------------------------------------------------
+
+-- Select fields
+SELECT c.region, c.continent, avg(fertility_rate) AS avg_fert_rate
+  -- From left table
+  FROM countries AS c
+    -- Join to right table
+    INNER JOIN populations AS p
+      -- Match on join condition
+      ON c.code = p.country_code
+  -- Where specific records matching some condition
+  WHERE year = 2015
+-- Group appropriately
+GROUP BY region, continent
+-- Order appropriately
+ORDER BY avg_fert_rate;
+
+-------------------------------------------------------------------
+
+-- Select fields
+SELECT name, country_code, city_proper_pop, metroarea_pop,  
+      -- Calculate city_perc
+      city_proper_pop / metroarea_pop * 100 AS city_perc
+  -- From appropriate table
+  FROM cities
+  -- Where 
+  WHERE name IN
+    -- Subquery
+    (SELECT capital
+     FROM countries
+     WHERE (continent = 'Europe'
+        OR Continent LIKE '%America%'))
+       AND metroarea_pop IS not null
+-- Order appropriately
+ORDER BY city_perc desc
+-- Limit amount
+limit 10;
