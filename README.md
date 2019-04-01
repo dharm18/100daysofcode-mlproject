@@ -11,5 +11,5 @@ This is a part of the 100DaysOfCode challenge. It is created with intentions to 
 7. [Comparison of deep learning software](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software)
 8. [Where do People learn ML / DS?](https://www.kaggle.com/sudalairajkumar/where-do-people-learn-ml-ds)
 9. [Joining SQL](https://campus.datacamp.com/courses/joining-data-in-postgresql/set-theory-clauses?ex=1)
-
-10. https://www.theschool.ai/courses/data-lit/
+10. [School of AI](https://www.theschool.ai/courses/data-lit/)
+11. [Cognitive Class](https://cognitiveclass.ai/)
